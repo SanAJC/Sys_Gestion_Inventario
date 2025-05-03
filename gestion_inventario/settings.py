@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jet',                            # Django JET (antes de admin) :contentReference[oaicite:2]{index=2}
-    'jet.dashboard',                 # si usas dashboard personalizado :contentReference[oaicite:3]{index=3}
+    'jet',                            
+    'jet.dashboard',                 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,30 +73,28 @@ TEMPLATES = [
 ]
 
 JET_DEFAULT_THEME = 'light-violet'
-
-
 # Personalización del menú lateral de Django JET con iconos para los modelos principales
 JET_SIDE_MENU_ITEMS = [
     {
         'label': 'Clientes',
         'app_label': 'clientes',
         'items': [
-            {'name': 'cliente', 'label': 'Clientes', 'icon': 'fa fa-user'},
+            {'name': 'cliente', 'label': 'Clientes'},
         ]
     },
     {
         'label': 'Productos',
         'app_label': 'products',
         'items': [
-            {'name': 'producto', 'label': 'Productos', 'icon': 'fa fa-cube'},
+            {'name': 'producto', 'label': 'Productos'},
         ]
     },
     {
         'label': 'Ventas',
         'app_label': 'ventas',
         'items': [
-            {'name': 'venta', 'label': 'Ventas', 'icon': 'fa fa-shopping-cart'},
-            {'name': 'detalleventa', 'label': 'Detalle Venta', 'icon': 'fa fa-list'},
+            {'name': 'venta', 'label': 'Ventas'},
+            {'name': 'detalleventa', 'label': 'Detalle Venta'},
         ]
     },
 ]
