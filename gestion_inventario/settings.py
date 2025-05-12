@@ -89,6 +89,7 @@ JET_SIDE_MENU_ITEMS = [
         'app_label': 'products',
         'items': [
             {'name': 'producto', 'label': 'Productos'},
+            {'name': 'proveedor', 'label': 'Proveedores'},
         ]
     },
     {
