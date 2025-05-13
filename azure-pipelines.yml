@@ -16,29 +16,24 @@ strategy:
   maxParallel: 1
 
 steps:
-# 0. Prependpath para asegurar el Python “real” del tool cache
 - script: |
+    REM 1) Inyecta el Python real en el PATH
     echo ##vso[task.prependpath]C:\Users\ASUS TUF\agent\_work\_tool\Python\3.12.10\x64
-  displayName: 'Añadir Python real al PATH'
 
-# 1. Crear y activar un venv
-- script: |
+    REM 2) Crear y activar el venv
     python -m venv .venv
-    call .venv\Scripts\activate
+    call .venv\Scripts\Activate.bat
 
-    # Verificamos
-    python --version
+    REM 3) Verificar que estamos usando el Python del venv
     where python
-  displayName: 'Crear y activar venv'
+    python --version
 
-# 2. Instalar dependencias dentro del venv
-- script: |
+    REM 4) Instalar dependencias dentro del venv
     python -m pip install --upgrade pip
     pip install -r requirements.txt
-  displayName: 'Instalar dependencias en venv'
+  displayName: 'Preparar venv e instalar dependencias'
   failOnStderr: false
 
-# 3. Ejecutar tests
 - script: |
     call .venv\Scripts\activate
     python manage.py test
