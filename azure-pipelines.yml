@@ -6,7 +6,8 @@
 trigger:
 - main
 
-pool: Default
+pool:
+  name: 'Default' 
   
 strategy:
   matrix:
