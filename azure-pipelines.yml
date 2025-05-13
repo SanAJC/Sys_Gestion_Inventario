@@ -17,9 +17,6 @@ strategy:
 
 steps:
 - script: |
-    REM 1) Inyecta el Python real en el PATH
-    echo ##vso[task.prependpath]C:\Users\ASUS TUF\agent\_work\_tool\Python\3.12.10\x64
-
     REM 2) Crear y activar el venv
     python -m venv .venv
     call .venv\Scripts\Activate.bat
