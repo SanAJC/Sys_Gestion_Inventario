@@ -18,7 +18,7 @@ strategy:
 steps:
 # 0. Prependpath para asegurar el Python “real” del tool cache
 - script: |
-    echo "##vso[task.prependpath]C:\Users\ASUS TUF\agent\_work\_tool\Python\3.12.10\x64"
+    echo ##vso[task.prependpath]C:\Users\ASUS TUF\agent\_work\_tool\Python\3.12.10\x64
   displayName: 'Añadir Python real al PATH'
 
 # 1. Crear y activar un venv
