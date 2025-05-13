@@ -15,14 +15,27 @@ strategy:
   maxParallel: 1
 
 steps:
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install prerequisites'
+- task: PowerShell@2
+  displayName: 'Instalar dependencias'
+  inputs:
+    targetType: 'inline'
+    pwsh: false
+    errorActionPreference: 'Stop'
+    script: |
+      Set-ExecutionPolicy Bypass -Scope Process
+      python --version
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
 
-- script: |
-    python manage.py test
-  displayName: 'Run tests'
+- task: PowerShell@2
+  displayName: 'Ejecutar tests'
+  inputs:
+    targetType: 'inline'
+    pwsh: false
+    errorActionPreference: 'Stop'
+    script: |
+      Set-ExecutionPolicy Bypass -Scope Process
+      python manage.py test
 
 - task: PublishTestResults@2
   inputs:
