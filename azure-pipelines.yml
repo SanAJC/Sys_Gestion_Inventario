@@ -40,3 +40,4 @@ steps:
     appType: 'webAppLinux'
     appName: 'gestion-inventario-dj'
     package: '.'
+    startUpCommand: 'gunicorn gestion_inventario.wsgi'
