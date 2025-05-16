@@ -1,14 +1,9 @@
-# Python Django
-# Test a Django project on multiple versions of Python.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
-
 trigger:
 - main
 
 pool:
-  name: 'Default' 
-  
+  name: 'Default'
+
 strategy:
   matrix:
     Python312:
@@ -16,22 +11,32 @@ strategy:
   maxParallel: 1
 
 steps:
+# 1) Preparar venv e instalar dependencias
 - script: |
-    REM 2) Crear y activar el venv
     python -m venv .venv
     call .venv\Scripts\Activate.bat
-
-    REM 3) Verificar que estamos usando el Python del venv
-    where python
-    python --version
-
-    REM 4) Instalar dependencias dentro del venv
     python -m pip install --upgrade pip
     pip install -r requirements.txt
   displayName: 'Preparar venv e instalar dependencias'
-  failOnStderr: false
 
+# 2) Ejecutar tests
 - script: |
     call .venv\Scripts\activate
     python manage.py test
   displayName: 'Ejecutar tests en venv'
+
+# 3) Migraciones y staticfiles (opcional antes del deploy)
+- script: |
+    call .venv\Scripts\activate
+    python manage.py migrate --no-input
+    python manage.py collectstatic --no-input
+  displayName: 'Migraciones y collectstatic'
+
+# 4) Desplegar a App Service con Publish Profile
+- task: AzureWebApp@1
+  displayName: 'Desplegar a Azure App Service'
+  inputs:
+    azureSubscription: 'connection-gestion-inventario'
+    appType: 'webAppLinux'
+    appName: 'gestion-inventario-dj'
+    package: '.'
