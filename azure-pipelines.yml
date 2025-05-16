@@ -41,3 +41,4 @@ steps:
     appName: 'gestion-inventario-dj'
     package: '.'
     startUpCommand: 'gunicorn gestion_inventario.wsgi'
+    runtimeStack: '3.12'
