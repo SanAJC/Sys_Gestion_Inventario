@@ -41,3 +41,5 @@ steps:
     appType: 'webAppLinux'
     appName: 'gestion-inventario-dj'
     package: '.'
+    RuntimeStack: 'PYTHON|3.12'
+    StartUpCommand: 'gunicorn --bind=0.0.0.0 --timeout 600 gestion_inventario.wsgi'
