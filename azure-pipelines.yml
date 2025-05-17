@@ -32,14 +32,14 @@ steps:
     python manage.py collectstatic --no-input
   displayName: 'Migraciones y collectstatic'
 
-# 4) Desplegar a App Service con Publish Profile
-- task: AzureWebApp@1
-  displayName: 'Desplegar a Azure App Service'
-  inputs:
-    azureSubscription: 'connection-gestion-inventario'
-    publishProfile: '$(AZURE_PUBLISH_PROFILE_CONTENT)'
-    appType: 'webAppLinux'
-    appName: 'gestion-inventario-dj'
-    package: '.'
-    RuntimeStack: 'PYTHON|3.12'
-    StartupCommand: 'gunicorn --bind=0.0.0.0 --timeout 600 gestion_inventario.wsgi'
+# # 4) Desplegar a App Service con Publish Profile
+# - task: AzureWebApp@1
+#   displayName: 'Desplegar a Azure App Service'
+#   inputs:
+#     azureSubscription: 'connection-gestion-inventario'
+#     publishProfile: '$(AZURE_PUBLISH_PROFILE_CONTENT)'
+#     appType: 'webAppLinux'
+#     appName: 'gestion-inventario-dj'
+#     package: '.'
+#     RuntimeStack: 'PYTHON|3.12'
+#     StartupCommand: 'gunicorn --bind=0.0.0.0 --timeout 600 gestion_inventario.wsgi'
