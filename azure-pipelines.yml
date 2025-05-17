@@ -36,9 +36,9 @@ steps:
 - task: AzureWebApp@1
   displayName: 'Desplegar a Azure App Service'
   inputs:
-    azureSubscription: 'connection-gestion-inventario'
+    azureSubscription: 'Azure para Estudiantes(4c61e495-cdff-40a6-bc84-c507fb72244a)'
     appType: 'webAppLinux'
     appName: 'gestion-inventario-dj'
     package: '.'
-    startUpCommand: 'gunicorn gestion_inventario.wsgi'
+    startUpCommand: 'gunicorn --bind=0.0.0.0 --timeout 600 gestion_inventario.wsgi'
     runtimeStack: '3.12'
