@@ -36,7 +36,7 @@ steps:
 - task: AzureWebApp@1
   displayName: 'Desplegar a Azure App Service'
   inputs:
-    azureSubscription: 'Azure para Estudiantes(4c61e495-cdff-40a6-bc84-c507fb72244a)'
+    azureSubscription: 'connection-gestion-inventario'
     appType: 'webAppLinux'
     appName: 'gestion-inventario-dj'
     package: '.'
