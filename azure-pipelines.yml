@@ -36,7 +36,8 @@ steps:
 - task: AzureWebApp@1
   displayName: 'Desplegar a Azure App Service'
   inputs:
-    azureSubscription: 'connection-gestion-inventario'
+    #azureSubscription: 'connection-gestion-inventario'
+    publishProfile: '$(AZURE_PUBLISH_PROFILE_CONTENT)'
     appType: 'webAppLinux'
     appName: 'gestion-inventario-dj'
     package: '.'
