@@ -33,13 +33,13 @@ steps:
   displayName: 'Migraciones y collectstatic'
 
 # 4) Desplegar a App Service con Publish Profile
-- task: AzureRmWebAppDeployment@5
+- task: AzureWebApp@1
+  displayName: 'Desplegar a Azure App Service'
   inputs:
-    ConnectionType: 'AzureRM'
     azureSubscription: 'connection-gestion-inventario'
+    publishProfile: '$(AZURE_PUBLISH_PROFILE_CONTENT)'
     appType: 'webAppLinux'
-    WebAppName: 'gestion-inventario-dj'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    appName: 'gestion-inventario-dj'
+    package: '.'
     RuntimeStack: 'PYTHON|3.12'
     StartupCommand: 'gunicorn --bind=0.0.0.0 --timeout 600 gestion_inventario.wsgi'
-    DeploymentTypeLinux: 'oneDeploy'
